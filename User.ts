@@ -1,8 +1,14 @@
+import { Insurance } from "Insurance";
+
 export class User{
-    uname: string;
+    name: string;
     email: string;
-    pwd: string;
+    password: string;
     contact: number;
-    addr: string;
+    address: string;
     dob: Date;
+    insurance: Insurance;
+    constructor(){
+        this.insurance = new Insurance();
+    }
 }

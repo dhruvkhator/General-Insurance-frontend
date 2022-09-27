@@ -2,46 +2,44 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
-                type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Signup</button>
+                type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Login</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
-                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Login</button>
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Signup</button>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpane1" aria-labelledby="home-tab"
             tabindex="0">
             <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Signup</h4>
+                <h4 class="modal-title" id="modal-basic-title">Login</h4>
                 <button type="button" class="btn-close" aria-label="Close"
                     (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="addUser" (ngSubmit)="onSignup()">
+                <form [formGroup]="validateUser" (ngSubmit)="onLogin()">
                     <div class="mb-3">
-                        <label for="uname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="uname">
+                        <label for="l_email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" formControlName="l_email" [(ngModel)]="user.email"
+                            id="l_email">
+                        <div *ngIf="submitted && validateUser.controls['l_email'].errors" class="error">
+                            <div class="text-danger" *ngIf="validateUser.controls['l_email'].errors['required']">Email is
+                                required</div>
+                            <div class="text-danger" *ngIf="validateUser.controls['l_email'].errors['pattern']">Email is
+                                invalid</div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class="mb-3">
-                        <label for="contact" class="form-label">Contact</label>
-                        <input type="text" class="form-control" id="contact">
-                    </div>
-                    <div class="mb-3">
-                        <label for="addr" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="addr">
-                    </div>
-                    <div class="mb-3">
-                        <label for="dob" class="form-label">DOB</label>
-                        <input type="date" class="form-control" id="dob">
+                        <label for="l_pwd" class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="l_pwd" [(ngModel)]="user.password"
+                            id="l_pwd">
+                        <div *ngIf="submitted && validateUser.controls['l_pwd'].errors" class="error">
+                            <div class="text-danger" *ngIf="validateUser.controls['l_pwd'].errors['required']">Password is
+                                required</div>
+                            <div class="text-danger" *ngIf="validateUser.controls['l_pwd'].errors['min']">Password must be
+                                at least 6 characters</div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -49,28 +47,28 @@
         </div>
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Login</h4>
+                <h4 class="modal-title" id="modal-basic-title">Signup</h4>
                 <button type="button" class="btn-close" aria-label="Close"
                     (click)="modal.dismiss('Cross click')"></button>
             </div>
-            <div class="modal-body">
-            <form [formGroup]="validateUser" (ngSubmit)="onLogin()">
-                <div class="mb-3">
-                    <label for="l_email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="l_email">
-                </div>
-                <div class="mb-3">
-                    <label for="l_pwd" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="l_pwd">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            </div>
+            <app-signup></app-signup>
         </div>
     </div>
+
+
     <!--div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div-->
 </ng-template>
-
-<button class="btn btn-outline-primary" (click)="open(content)">Login</button>
+<ng-template #logout let-modal style="width: 300px;">
+    <div>
+        <div class="text pointer" (click) = "profile()" >User Profile</div>
+    </div>
+    <button class="btn btn-outline-primary" type="submit" (click)="onlogout()">Logout</button>
+</ng-template>
+<div *ngIf="this.storage.retrieve('isLoggedIn')">
+    <div class="text-bg-dark pointer" style="font-weight: 600;" (click)="open(logout)">{{this.storage.retrieve('uname')}}</div>
+</div>
+<div *ngIf="!this.storage.retrieve('isLoggedIn')">
+    <button class="btn btn-outline-primary" (click)="open(content)">Login</button>
+</div>

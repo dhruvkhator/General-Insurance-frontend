@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = "http://localhost:3000/students";
+  private baseUrl = "http://localhost:3000/users";
   constructor(private http_ser: HttpClient) { }
 
   createUser(user: User): Observable<object>{
@@ -19,6 +19,8 @@ export class UserService {
   }
 
   getUserByEmail(email: string): Observable<User[]>{
-    return this.http_ser.get<User[]>(this.baseUrl+'/'+email);
+    return this.http_ser.get<User[]>(this.baseUrl+'/?email='+email);
   }
+  
+  
 }

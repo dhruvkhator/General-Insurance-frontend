@@ -9,20 +9,9 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'general_insurance';
+  
 
-  addForm: FormGroup;
-  submitted: boolean = false;
-  user : User = new User();
+  constructor(){}
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService){}
-
-  createUser(){
-    this.userService.createUser(this.user).subscribe();
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    this.createUser();
-  }
+ 
 }
