@@ -7,8 +7,5 @@ export class User{
     contact: number;
     address: string;
     dob: Date;
-    insurance: Insurance;
-    constructor(){
-        this.insurance = new Insurance();
-    }
+    insurance: Array<Insurance>;
 }

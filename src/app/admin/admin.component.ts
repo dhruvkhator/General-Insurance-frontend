@@ -12,4 +12,10 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
 }

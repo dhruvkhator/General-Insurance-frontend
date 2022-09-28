@@ -73,8 +73,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  profile(){
-    this.router.navigate(["/profile"]);
-  }
   
 }

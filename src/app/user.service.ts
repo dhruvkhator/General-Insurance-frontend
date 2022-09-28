@@ -22,5 +22,4 @@ export class UserService {
     return this.http_ser.get<User[]>(this.baseUrl+'/?email='+email);
   }
   
-  
 }

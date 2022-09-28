@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AdminClaimComponent } from './admin-claim/admin-claim.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminComponent } from './admin/admin.component';
@@ -9,9 +10,12 @@ import { ClaimComponent } from './claim/claim.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { InsuranceComponent } from './insurance/insurance.component';
+import { MypolicyComponent } from './mypolicy/mypolicy.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { PremiumComponent } from './premium/premium.component';
-import { ProfileComponent } from './profile/profile.component';
+
+import { RenewComponent } from './renew/renew.component';
 
 const routes: Routes = [
   {
@@ -35,9 +39,7 @@ const routes: Routes = [
   {
     path:'buy', component: BuyInsuranceComponent
   },
-  {
-    path: 'profile', component: ProfileComponent
-  }, 
+
   {
     path: 'admin', component: AdminComponent
   },
@@ -46,6 +48,14 @@ const routes: Routes = [
   },
   {
     path: 'admindashboard', component: AdminDashboardComponent
+  },{
+    path: 'adminclaim',component:AdminClaimComponent
+  },
+  {
+    path: 'mypolicy', component: MypolicyComponent
+  },
+  {
+    path: 'renew', component: RenewComponent
   }
 
 ];

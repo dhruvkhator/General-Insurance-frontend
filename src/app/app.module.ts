@@ -18,7 +18,7 @@ import { ClaimComponent } from './claim/claim.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { BuyInsuranceComponent } from './buy-insurance/buy-insurance.component';
-import { ProfileComponent } from './profile/profile.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
@@ -31,6 +31,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminClaimComponent } from './admin-claim/admin-claim.component';
+import { MypolicyComponent } from './mypolicy/mypolicy.component';
+import { RenewComponent } from './renew/renew.component';
 
 @NgModule({
   declarations: [
@@ -46,12 +49,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     HeaderComponent,
     BuyInsuranceComponent,
-    ProfileComponent,
+
     AdminComponent,
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminHomeComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminClaimComponent,
+    MypolicyComponent,
+
+    RenewComponent
   ],
   imports: [
     BrowserModule,

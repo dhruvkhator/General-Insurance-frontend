@@ -61,9 +61,6 @@
     </div-->
 </ng-template>
 <ng-template #logout let-modal style="width: 300px;">
-    <div>
-        <div class="text pointer" (click) = "profile()" >User Profile</div>
-    </div>
     <button class="btn btn-outline-primary" type="submit" (click)="onlogout()">Logout</button>
 </ng-template>
 <div *ngIf="this.storage.retrieve('isLoggedIn')">
